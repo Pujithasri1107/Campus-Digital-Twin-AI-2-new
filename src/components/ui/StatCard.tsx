@@ -9,64 +9,133 @@ interface StatCardProps {
   color?: string;
 }
 
-const colorMap: Record<string, { bg: string; border: string; glow: string; icon: string }> = {
+const colorStyles: Record<string, { gradient: string; border: string; shadow: string; iconColor: string; glowColor: string }> = {
   blue: {
-    bg: 'from-blue-500/20 via-blue-500/10 to-transparent',
-    border: 'border-blue-500/30',
-    glow: 'shadow-blue-500/20',
-    icon: 'text-blue-400',
+    gradient: 'from-blue-600/20 via-blue-500/10 to-transparent',
+    border: 'border-blue-500/40',
+    shadow: '0 0 30px rgba(59, 130, 246, 0.2)',
+    iconColor: 'text-blue-400',
+    glowColor: '#3b82f6',
   },
   cyan: {
-    bg: 'from-cyan-500/20 via-cyan-500/10 to-transparent',
-    border: 'border-cyan-500/30',
-    glow: 'shadow-cyan-500/20',
-    icon: 'text-cyan-400',
+    gradient: 'from-cyan-500/20 via-cyan-400/10 to-transparent',
+    border: 'border-cyan-400/40',
+    shadow: '0 0 30px rgba(34, 211, 238, 0.2)',
+    iconColor: 'text-cyan-400',
+    glowColor: '#22d3ee',
   },
   amber: {
-    bg: 'from-amber-500/20 via-amber-500/10 to-transparent',
-    border: 'border-amber-500/30',
-    glow: 'shadow-amber-500/20',
-    icon: 'text-amber-400',
+    gradient: 'from-amber-500/20 via-orange-500/10 to-transparent',
+    border: 'border-amber-400/40',
+    shadow: '0 0 30px rgba(251, 191, 36, 0.2)',
+    iconColor: 'text-amber-400',
+    glowColor: '#fbbf24',
   },
-  green: {
-    bg: 'from-emerald-500/20 via-emerald-500/10 to-transparent',
-    border: 'border-emerald-500/30',
-    glow: 'shadow-emerald-500/20',
-    icon: 'text-emerald-400',
+  emerald: {
+    gradient: 'from-emerald-500/20 via-green-500/10 to-transparent',
+    border: 'border-emerald-400/40',
+    shadow: '0 0 30px rgba(16, 185, 129, 0.2)',
+    iconColor: 'text-emerald-400',
+    glowColor: '#10b981',
   },
 };
 
 export default function StatCard({ icon: Icon, value, label, index, color = 'blue' }: StatCardProps) {
-  const colorStyle = colorMap[color] || colorMap.blue;
+  const styles = colorStyles[color] || colorStyles.blue;
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+      initial={{ opacity: 0, y: 30, scale: 0.9 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ delay: index * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className={`group relative rounded-2xl p-4 sm:p-5 overflow-hidden bg-gradient-to-br ${colorStyle.bg} backdrop-blur-xl border ${colorStyle.border} hover:border-white/20 transition-all duration-500`}
+      whileHover={{
+        scale: 1.05,
+        y: -5,
+        transition: { duration: 0.3 }
+      }}
+      transition={{
+        delay: index * 0.15,
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1]
+      }}
+      className="relative group"
     >
-      {/* Glow effect on hover */}
-      <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl ${colorStyle.glow} shadow-2xl`} />
+      {/* Glow effect behind card */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileHover={{ opacity: 0.6 }}
+        transition={{ duration: 0.3 }}
+        className="absolute -inset-1 rounded-2xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity duration-500"
+        style={{ background: `radial-gradient(circle at center, ${styles.glowColor}30, transparent 70%)` }}
+      />
 
-      {/* Subtle grid pattern */}
-      <div className="absolute inset-0 opacity-5" style={{
-        backgroundImage: `linear-gradient(${color === 'blue' ? '#3b82f6' : color === 'cyan' ? '#06b6d4' : color === 'amber' ? '#f59e0b' : '#10b981'} 1px, transparent 1px), linear-gradient(90deg, ${color === 'blue' ? '#3b82f6' : color === 'cyan' ? '#06b6d4' : color === 'amber' ? '#f59e0b' : '#10b981'} 1px, transparent 1px)`,
-        backgroundSize: '20px 20px',
-      }} />
+      {/* Card container */}
+      <div
+        className={`relative overflow-hidden rounded-xl sm:rounded-2xl p-4 sm:p-5 backdrop-blur-xl border ${styles.border} bg-gradient-to-br ${styles.gradient} transition-all duration-500 group-hover:border-white/30`}
+        style={{ boxShadow: styles.shadow }}
+      >
+        {/* Animated border glow */}
+        <motion.div
+          animate={{
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 2 + index * 0.5,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+          className="absolute inset-0 rounded-xl sm:rounded-2xl"
+          style={{
+            background: `linear-gradient(135deg, transparent 40%, ${styles.glowColor}20 50%, transparent 60%)`,
+            backgroundSize: '200% 200%',
+          }}
+        />
 
-      <div className="relative flex items-center gap-3 sm:gap-4">
-        <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-white/10 to-white/5 flex items-center justify-center backdrop-blur-sm border border-white/10 group-hover:scale-110 group-hover:border-white/20 transition-all duration-300`}>
-          <Icon className={`w-5 h-5 sm:w-6 sm:h-6 ${colorStyle.icon}`} />
+        {/* Corner shine effect */}
+        <div className="absolute -top-12 -right-12 w-24 h-24 rounded-full bg-white/5 blur-2xl group-hover:bg-white/10 transition-all duration-500" />
+
+        {/* Content */}
+        <div className="relative flex items-center gap-3">
+          {/* Icon container */}
+          <motion.div
+            animate={{
+              boxShadow: [
+                `0 0 0px ${styles.glowColor}00`,
+                `0 0 15px ${styles.glowColor}40`,
+                `0 0 0px ${styles.glowColor}00`,
+              ]
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              delay: index * 0.2,
+            }}
+            className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 flex items-center justify-center group-hover:border-white/20 transition-all duration-300"
+          >
+            <Icon className={`w-5 h-5 sm:w-6 sm:h-6 ${styles.iconColor}`} />
+          </motion.div>
+
+          {/* Text */}
+          <div className="flex-1 min-w-0">
+            <motion.p
+              initial={{ opacity: 0.8 }}
+              whileHover={{ scale: 1.05 }}
+              className="text-xl sm:text-2xl font-bold text-white tracking-tight"
+            >
+              {value}
+            </motion.p>
+            <p className="text-xs sm:text-sm text-gray-400 font-medium truncate">{label}</p>
+          </div>
         </div>
-        <div className="flex-1 min-w-0">
-          <p className="text-2xl sm:text-3xl font-bold text-white tracking-tight">{value}</p>
-          <p className="text-xs sm:text-sm text-gray-400 font-medium truncate">{label}</p>
-        </div>
+
+        {/* Subtle pattern overlay */}
+        <div
+          className="absolute inset-0 opacity-5 pointer-events-none"
+          style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
+            backgroundSize: '8px 8px',
+          }}
+        />
       </div>
-
-      {/* Corner accent */}
-      <div className={`absolute -top-10 -right-10 w-20 h-20 rounded-full ${colorStyle.border} opacity-20 group-hover:opacity-40 transition-opacity duration-500`} />
     </motion.div>
   );
 }
