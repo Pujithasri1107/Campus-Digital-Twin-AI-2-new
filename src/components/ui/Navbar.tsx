@@ -65,13 +65,14 @@ export default function Navbar() {
           </div>
 
           <div className="hidden lg:block">
-            <motion.button
+            <motion.a
+              href="#login"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-6 py-2.5 rounded-full btn-outline text-white font-medium neon-border"
+              className="px-6 py-2.5 rounded-full btn-outline text-white font-medium neon-border inline-block"
             >
               Login
-            </motion.button>
+            </motion.a>
           </div>
 
           <button
@@ -102,9 +103,13 @@ export default function Navbar() {
                   {link.name}
                 </a>
               ))}
-              <button className="w-full mt-4 px-6 py-2.5 rounded-full btn-outline text-white font-medium">
+              <a
+                href="#login"
+                className="w-full mt-4 px-6 py-2.5 rounded-full btn-outline text-white font-medium block text-center"
+                onClick={() => setIsOpen(false)}
+              >
                 Login
-              </button>
+              </a>
             </div>
           </motion.div>
         )}

@@ -8,12 +8,29 @@ import MaintenanceDashboard from './components/MaintenanceDashboard';
 import Analytics from './components/Analytics';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import Login from './components/Login';
 
 function App() {
   const [mounted, setMounted] = useState(false);
+  const [currentPage, setCurrentPage] = useState<'home' | 'login'>('home');
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.slice(1);
+      if (hash === 'login') {
+        setCurrentPage('login');
+      } else {
+        setCurrentPage('home');
+      }
+    };
+
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
   if (!mounted) {
@@ -23,6 +40,10 @@ function App() {
         <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
       </div>
     );
+  }
+
+  if (currentPage === 'login') {
+    return <Login />;
   }
 
   return (
