@@ -1,28 +1,30 @@
 import { motion } from 'framer-motion';
-import { Building2, Github, Linkedin, Twitter, Instagram, Mail, MapPin, Phone } from 'lucide-react';
+import {
+  Building2,
+  Github,
+  Linkedin,
+  Mail,
+  MapPin,
+  Phone,
+  Cpu,
+  type LucideIcon,
+} from 'lucide-react';
 
 const quickLinks = [
   { name: 'Home', href: '#home' },
   { name: 'Campus Map', href: '#campus' },
   { name: 'AI Assistant', href: '#assistant' },
+  { name: 'Maintenance', href: '#maintenance' },
   { name: 'Dashboard', href: '#dashboard' },
   { name: 'Contact', href: '#contact' },
 ];
 
-const services = [
-  'Digital Twin Platform',
-  'AI Maintenance',
-  'IoT Integration',
-  'Predictive Analytics',
-  'Energy Management',
-  'Smart Security',
-];
+const technologies = ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Vite'];
 
-const socialLinks = [
-  { icon: Github, href: '#', label: 'GitHub' },
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
-  { icon: Twitter, href: '#', label: 'Twitter' },
-  { icon: Instagram, href: '#', label: 'Instagram' },
+const socialLinks: { icon: LucideIcon; href: string; label: string }[] = [
+  { icon: Github, href: 'https://github.com', label: 'GitHub' },
+  { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
+  { icon: Mail, href: 'mailto:info@diet.edu.in', label: 'Email' },
 ];
 
 export default function Footer() {
@@ -30,34 +32,38 @@ export default function Footer() {
     <footer className="relative pt-24 pb-8 overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+        <div className="absolute top-1/2 left-1/4 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+          {/* Brand */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-1"
+            className="sm:col-span-2 lg:col-span-1"
           >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+            <div className="flex items-center gap-3 mb-5">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center neon-glow">
                 <Building2 className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-white">Campus Twin</h3>
-                <p className="text-xs text-gray-400">Smart Campus Solutions</p>
+                <h3 className="text-base font-bold text-white">Campus Digital Twin</h3>
+                <p className="text-xs text-gray-400">AI Assistant</p>
               </div>
             </div>
-            <p className="text-sm text-gray-400 leading-relaxed mb-6">
-              Transforming campus management with Digital Twin technology and AI-powered maintenance systems.
+            <p className="text-sm text-gray-400 leading-relaxed mb-5">
+              AI-powered Smart Campus Monitoring and Maintenance Platform.
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social) => (
                 <motion.a
                   key={social.label}
                   href={social.href}
-                  whileHover={{ y: -3 }}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ y: -3, scale: 1.1 }}
                   className="w-10 h-10 rounded-lg glass-card flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary/20 transition-colors"
                   aria-label={social.label}
                 >
@@ -67,21 +73,22 @@ export default function Footer() {
             </div>
           </motion.div>
 
+          {/* Quick Links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
-            <h4 className="text-white font-semibold mb-6">Quick Links</h4>
+            <h4 className="text-white font-semibold mb-5">Quick Links</h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-sm text-gray-400 hover:text-secondary transition-colors flex items-center gap-2"
+                    className="text-sm text-gray-400 hover:text-secondary transition-colors flex items-center gap-2 group"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary transition-all duration-300 group-hover:w-3" />
                     {link.name}
                   </a>
                 </li>
@@ -89,47 +96,51 @@ export default function Footer() {
             </ul>
           </motion.div>
 
+          {/* Technologies */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <h4 className="text-white font-semibold mb-6">Services</h4>
+            <h4 className="text-white font-semibold mb-5">Technologies Used</h4>
             <ul className="space-y-3">
-              {services.map((service) => (
-                <li key={service}>
-                  <span className="text-sm text-gray-400 hover:text-secondary transition-colors flex items-center gap-2 cursor-pointer">
-                    <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
-                    {service}
+              {technologies.map((tech) => (
+                <li key={tech}>
+                  <span className="text-sm text-gray-400 flex items-center gap-2">
+                    <Cpu className="w-4 h-4 text-secondary shrink-0" />
+                    {tech}
                   </span>
                 </li>
               ))}
             </ul>
           </motion.div>
 
+          {/* Contact info */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
-            <h4 className="text-white font-semibold mb-6">Contact Info</h4>
+            <h4 className="text-white font-semibold mb-5">Contact Info</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                <span className="text-sm text-gray-400">
-                  University Road, Tech City<br />
-                  Innovation District, 560001
+                <span className="text-sm text-gray-400 leading-relaxed">
+                  Dadi Institute of Engineering and Technology<br />
+                  Anakapalle, Andhra Pradesh – 531002
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-primary shrink-0" />
-                <span className="text-sm text-gray-400">+1 (555) 123-4567</span>
+                <span className="text-sm text-gray-400">+91 891 000 0000</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-primary shrink-0" />
-                <span className="text-sm text-gray-400">contact@campustwin.edu</span>
+                <a href="mailto:info@diet.edu.in" className="text-sm text-gray-400 hover:text-secondary transition-colors">
+                  info@diet.edu.in
+                </a>
               </li>
             </ul>
           </motion.div>
@@ -141,19 +152,17 @@ export default function Footer() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="flex flex-col sm:flex-row items-center justify-between gap-4"
+          className="flex flex-col items-center justify-between gap-4 text-center"
         >
-          <p className="text-sm text-gray-500">
-            &copy; 2024 Campus Digital Twin. All rights reserved.
+          <p className="text-sm text-gray-500 leading-relaxed">
+            &copy; 2026 Campus Digital Twin AI Assistant.
+            <br className="sm:hidden" />
+            <span className="hidden sm:inline"> </span>
+            Developed for Dadi Institute of Engineering and Technology.
           </p>
           <div className="flex items-center gap-2 text-sm text-gray-500">
-            <span>Built for</span>
-            <span className="text-secondary font-medium">Smart Campus Management</span>
-          </div>
-          <div className="flex gap-6 text-sm text-gray-500">
-            <a href="#" className="hover:text-white transition-colors">Privacy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms</a>
-            <a href="#" className="hover:text-white transition-colors">Cookies</a>
+            <span>Powered by</span>
+            <span className="text-secondary font-medium">AI Smart Campus</span>
           </div>
         </motion.div>
       </div>
