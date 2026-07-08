@@ -241,8 +241,8 @@ export default function Hero() {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 pt-20 sm:pt-24 pb-32 sm:pb-40">
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-center">
+      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 pt-16 sm:pt-20 lg:pt-24 pb-24 sm:pb-32 lg:pb-40">
+        <div className="grid lg:grid-cols-12 gap-6 lg:gap-8 xl:gap-12 items-center">
           {/* Left Column - Text Content */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -255,7 +255,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-full mb-6 sm:mb-8"
+              className="inline-flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-full mb-4 sm:mb-6 lg:mb-8"
               style={{
                 background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.15) 0%, rgba(56, 189, 248, 0.1) 50%, rgba(37, 99, 235, 0.15) 100%)',
                 border: '1px solid rgba(56, 189, 248, 0.3)',
@@ -268,17 +268,17 @@ export default function Hero() {
                 transition={{ duration: 1.5, repeat: Infinity }}
                 className="relative"
               >
-                <div className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
-                <div className="absolute inset-0 w-2.5 h-2.5 rounded-full bg-emerald-400 blur-sm" />
+                <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-emerald-400" />
+                <div className="absolute inset-0 w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-emerald-400 blur-sm" />
               </motion.div>
 
-              <Sparkles className="w-4 h-4 text-cyan-400" />
+              <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400" />
 
               <motion.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.3 }}
-                className="text-xs sm:text-sm font-semibold tracking-wider uppercase"
+                className="text-[10px] sm:text-xs lg:text-sm font-semibold tracking-wider uppercase"
                 style={{
                   background: 'linear-gradient(90deg, #22d3ee, #3b82f6, #22d3ee)',
                   backgroundSize: '200% auto',
@@ -295,7 +295,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-bold leading-[1.05] mb-4 sm:mb-6 tracking-[-0.02em]"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-bold leading-tight sm:leading-[1.05] mb-3 sm:mb-4 lg:mb-6 tracking-[-0.02em]"
             >
               <span className="text-white">Smart Campus</span>
               <br />
@@ -309,14 +309,14 @@ export default function Hero() {
               >
                 Digital Twin
               </span>
-              {/* Animated underline */}
+              {/* Animated underline - hidden on mobile */}
               <motion.div
                 animate={{
                   scaleX: [0, 1, 0],
                   x: ['-50%', '0%', '50%'],
                 }}
                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute -bottom-1 left-0 right-0 h-[3px] rounded-full"
+                className="absolute -bottom-1 left-0 right-0 h-[3px] rounded-full hidden sm:block"
                 style={{
                   background: 'linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.6), transparent)',
                 }}
@@ -328,7 +328,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="text-base sm:text-lg text-gray-300/90 mb-4 max-w-lg mx-auto lg:mx-0 leading-relaxed font-light"
+              className="text-sm sm:text-base lg:text-lg text-gray-300/90 mb-3 sm:mb-4 max-w-md lg:max-w-lg mx-auto lg:mx-0 leading-relaxed font-light"
             >
               Experience the future of smart campus management with AI-powered maintenance,
               interactive digital mapping, real-time monitoring, predictive maintenance,
@@ -340,10 +340,10 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.35, duration: 0.6 }}
-              className="flex items-center justify-center lg:justify-start gap-3 mb-8 sm:mb-10"
+              className="flex items-center justify-center lg:justify-start gap-3 mb-6 sm:mb-8 lg:mb-10"
             >
-              <div className="h-[1px] w-10 sm:w-16 bg-gradient-to-r from-blue-500/60 to-cyan-400/60" />
-              <span className="text-xs sm:text-sm text-gray-400/80 font-medium tracking-wide">
+              <div className="h-[1px] w-8 sm:w-10 lg:w-16 bg-gradient-to-r from-blue-500/60 to-cyan-400/60" />
+              <span className="text-[10px] sm:text-xs lg:text-sm text-gray-400/80 font-medium tracking-wide">
                 Developed for Dadi Institute of Engineering And Technology
               </span>
             </motion.div>
@@ -353,14 +353,14 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
             >
               {/* Primary Button */}
               <motion.a
                 href="#campus"
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.97 }}
-                className="group relative px-7 sm:px-8 py-4 rounded-xl font-semibold text-sm sm:text-base overflow-hidden inline-flex items-center justify-center gap-2.5"
+                className="group relative px-6 sm:px-7 lg:px-8 py-3.5 sm:py-4 rounded-xl font-semibold text-sm sm:text-base overflow-hidden inline-flex items-center justify-center gap-2 sm:gap-2.5"
               >
                 {/* Background */}
                 <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500" />
@@ -382,7 +382,7 @@ export default function Hero() {
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
                 />
 
-                <MapPin className="w-4 h-5 relative z-10" />
+                <MapPin className="w-4 h-4 sm:w-4 sm:h-5 relative z-10" />
                 <span className="relative z-10 text-white">Explore Campus</span>
               </motion.a>
 
@@ -391,7 +391,7 @@ export default function Hero() {
                 href="#contact"
                 whileHover={{ scale: 1.03, y: -2 }}
                 whileTap={{ scale: 0.97 }}
-                className="group relative px-7 sm:px-8 py-4 rounded-xl font-semibold text-sm sm:text-base overflow-hidden inline-flex items-center justify-center gap-2.5"
+                className="group relative px-6 sm:px-7 lg:px-8 py-3.5 sm:py-4 rounded-xl font-semibold text-sm sm:text-base overflow-hidden inline-flex items-center justify-center gap-2 sm:gap-2.5"
               >
                 {/* Background */}
                 <div
@@ -427,7 +427,7 @@ export default function Hero() {
                   className="absolute inset-0 rounded-xl bg-cyan-400 transition-opacity duration-300"
                 />
 
-                <AlertCircle className="w-4 h-5 relative z-10 text-cyan-400 group-hover:text-white transition-colors duration-300" />
+                <AlertCircle className="w-4 h-4 sm:w-4 sm:h-5 relative z-10 text-cyan-400 group-hover:text-white transition-colors duration-300" />
                 <span className="relative z-10 text-gray-300 group-hover:text-white transition-colors duration-300">
                   Report an Issue
                 </span>
@@ -448,13 +448,13 @@ export default function Hero() {
               className="relative"
             >
               {/* Outer glow */}
-              <div className="absolute -inset-4 sm:-inset-6 rounded-3xl blur-2xl opacity-60" style={{
+              <div className="absolute -inset-3 sm:-inset-4 lg:-inset-6 rounded-2xl sm:rounded-3xl blur-2xl opacity-60" style={{
                 background: 'radial-gradient(ellipse at center, rgba(37, 99, 235, 0.3) 0%, rgba(56, 189, 248, 0.2) 30%, transparent 70%)',
               }} />
 
               {/* Main Card */}
               <div
-                className="relative rounded-2xl sm:rounded-3xl overflow-hidden backdrop-blur-2xl"
+                className="relative rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden backdrop-blur-2xl"
                 style={{
                   background: 'linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 50%, rgba(255,255,255,0.05) 100%)',
                   border: '1px solid rgba(56, 189, 248, 0.2)',
@@ -465,7 +465,7 @@ export default function Hero() {
                 <motion.div
                   animate={{ opacity: [0.3, 0.6, 0.3] }}
                   transition={{ duration: 3, repeat: Infinity }}
-                  className="absolute inset-0 rounded-2xl sm:rounded-3xl pointer-events-none"
+                  className="absolute inset-0 rounded-xl sm:rounded-2xl lg:rounded-3xl pointer-events-none"
                   style={{
                     boxShadow: 'inset 0 0 30px rgba(56, 189, 248, 0.1)',
                   }}
@@ -503,44 +503,46 @@ export default function Hero() {
                         linear-gradient(90deg, rgba(56, 189, 248, 0.1) 1px, transparent 1px),
                         linear-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px)
                       `,
-                      backgroundSize: '40px 40px',
+                      backgroundSize: '30px 30px sm:40px sm:40px',
                     }}
                   />
 
-                  {/* Holographic elements */}
-                  <HolographicOverlay />
+                  {/* Holographic elements - Hidden on very small screens */}
+                  <div className="hidden sm:block">
+                    <HolographicOverlay />
+                  </div>
 
                   {/* Status indicators */}
                   <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.5 }}
-                    className="absolute top-3 left-3 sm:top-5 sm:left-5 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-sm border border-cyan-400/30"
+                    className="absolute top-2 left-2 sm:top-3 sm:left-3 lg:top-5 lg:left-5 flex items-center gap-1.5 sm:gap-2 px-2 py-1 sm:px-3 sm:py-1.5 rounded-full bg-black/40 backdrop-blur-sm border border-cyan-400/30"
                   >
                     <motion.div
                       animate={{ scale: [1, 1.2, 1] }}
                       transition={{ duration: 1, repeat: Infinity }}
-                      className="w-2 h-2 rounded-full bg-emerald-400"
+                      className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-400"
                     />
-                    <span className="text-xs font-mono text-cyan-400 tracking-wider">LIVE DATA</span>
+                    <span className="text-[10px] sm:text-xs font-mono text-cyan-400 tracking-wider">LIVE DATA</span>
                   </motion.div>
 
                   {/* WiFi indicator */}
                   <motion.div
                     animate={{ opacity: [0.5, 1, 0.5] }}
                     transition={{ duration: 2, repeat: Infinity }}
-                    className="absolute top-3 right-3 sm:top-5 sm:right-5"
+                    className="absolute top-2 right-2 sm:top-3 sm:right-3 lg:top-5 lg:right-5"
                   >
-                    <div className="p-2 rounded-lg bg-black/40 backdrop-blur-sm border border-cyan-400/30">
-                      <Wifi className="w-4 h-4 text-cyan-400" />
+                    <div className="p-1.5 sm:p-2 rounded-lg bg-black/40 backdrop-blur-sm border border-cyan-400/30">
+                      <Wifi className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400" />
                     </div>
                   </motion.div>
 
-                  {/* Radar sweep effect */}
+                  {/* Radar sweep effect - Hidden on mobile */}
                   <motion.div
                     animate={{ rotate: 360 }}
                     transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
-                    className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-32 h-32"
+                    className="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-24 h-24 sm:w-32 sm:h-32 hidden sm:block"
                   >
                     <div
                       className="absolute inset-0 rounded-full"
@@ -555,10 +557,10 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6 }}
-                    className="absolute bottom-3 right-3 sm:bottom-5 sm:right-5 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-sm border border-cyan-400/30"
+                    className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 lg:bottom-5 lg:right-5 flex items-center gap-1.5 sm:gap-2 px-2 py-1 sm:px-3 sm:py-1.5 rounded-full bg-black/40 backdrop-blur-sm border border-cyan-400/30"
                   >
-                    <Activity className="w-3 h-3 text-cyan-400" />
-                    <span className="text-xs font-mono text-cyan-400">94% HEALTH</span>
+                    <Activity className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-cyan-400" />
+                    <span className="text-[10px] sm:text-xs font-mono text-cyan-400">94% HEALTH</span>
                   </motion.div>
                 </div>
 
@@ -578,21 +580,21 @@ export default function Hero() {
                     scaleX: [0.8, 1, 0.8],
                   }}
                   transition={{ duration: 2, repeat: Infinity }}
-                  className="absolute bottom-0 left-10 right-10 h-[2px] rounded-full"
+                  className="absolute bottom-0 left-8 right-8 sm:left-10 sm:right-10 h-[2px] rounded-full hidden sm:block"
                   style={{
                     background: 'linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.8), transparent)',
                   }}
                 />
               </div>
 
-              {/* Floating action badges */}
+              {/* Floating action badges - Hidden on mobile */}
               <motion.div
                 animate={{
                   y: [0, -8, 0],
                   opacity: [0.7, 1, 0.7],
                 }}
                 transition={{ duration: 3, repeat: Infinity }}
-                className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3"
+                className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 hidden sm:block"
               >
                 <div className="relative">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center">
@@ -608,7 +610,7 @@ export default function Hero() {
                   opacity: [0.7, 1, 0.7],
                 }}
                 transition={{ duration: 3.5, repeat: Infinity, delay: 0.5 }}
-                className="absolute -bottom-2 -left-2 sm:-bottom-3 sm:-left-3"
+                className="absolute -bottom-2 -left-2 sm:-bottom-3 sm:-left-3 hidden sm:block"
               >
                 <div className="relative">
                   <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center">
@@ -626,7 +628,7 @@ export default function Hero() {
                 opacity: [0.25, 0.45, 0.25],
               }}
               transition={{ duration: 8, repeat: Infinity }}
-              className="absolute -inset-12 sm:-inset-16 rounded-3xl blur-3xl -z-30"
+              className="absolute -inset-8 sm:-inset-12 lg:-inset-16 rounded-2xl sm:rounded-3xl blur-3xl -z-30"
               style={{
                 background: 'radial-gradient(ellipse at center, rgba(37, 99, 235, 0.2) 0%, rgba(56, 189, 248, 0.1) 40%, transparent 70%)',
               }}
@@ -640,18 +642,18 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.8 }}
-        className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 z-20"
+        className="absolute bottom-4 sm:bottom-6 lg:bottom-10 left-1/2 -translate-x-1/2 z-20"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          className="flex flex-col items-center gap-3"
+          className="flex flex-col items-center gap-2 sm:gap-3"
         >
-          <span className="text-[10px] sm:text-xs text-gray-500/80 font-medium tracking-[0.2em] uppercase">
+          <span className="text-[9px] sm:text-[10px] lg:text-xs text-gray-500/80 font-medium tracking-[0.15em] sm:tracking-[0.2em] uppercase">
             Scroll
           </span>
           <div
-            className="w-5 h-8 sm:w-6 sm:h-10 rounded-full flex items-start justify-center p-1.5"
+            className="w-5 h-7 sm:w-5 sm:h-8 lg:w-6 lg:h-10 rounded-full flex items-start justify-center p-1 sm:p-1.5"
             style={{
               background: 'rgba(255, 255, 255, 0.03)',
               border: '1px solid rgba(56, 189, 248, 0.2)',
@@ -659,9 +661,9 @@ export default function Hero() {
             }}
           >
             <motion.div
-              animate={{ y: [0, 10, 0] }}
+              animate={{ y: [0, 8, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
-              className="w-1 h-2 sm:h-2.5 rounded-full"
+              className="w-1 h-2 sm:h-2 lg:h-2.5 rounded-full"
               style={{
                 background: 'linear-gradient(180deg, #22d3ee, #3b82f6)',
               }}

@@ -108,10 +108,10 @@ const scheduleItems = [
 
 export default function MaintenanceDashboard() {
   return (
-    <section id="maintenance" className="relative py-24 overflow-hidden">
+    <section id="maintenance" className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/5 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-secondary/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/5 w-48 sm:w-72 h-48 sm:h-72 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-56 sm:w-80 h-56 sm:h-80 bg-secondary/5 rounded-full blur-3xl" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -120,28 +120,28 @@ export default function MaintenanceDashboard() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-12 lg:mb-16"
         >
           <motion.span
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card text-secondary text-sm font-medium mb-4"
+            className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full glass-card text-secondary text-xs sm:text-sm font-medium mb-3 sm:mb-4"
           >
-            <HardHat className="w-4 h-4" />
+            <HardHat className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             DIET Anakapalli · Live Operations
           </motion.span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-3 sm:mb-4">
             Campus Maintenance <span className="gradient-text">Dashboard</span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-gray-400 max-w-xl lg:max-w-2xl mx-auto px-4">
             Monitor and manage maintenance requests across the campus in real
             time.
           </p>
         </motion.div>
 
         {/* Summary cards */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-10">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-8 sm:mb-10">
           {summaryCards.map((card, index) => (
             <motion.div
               key={card.label}
@@ -154,31 +154,31 @@ export default function MaintenanceDashboard() {
             >
               {/* Gradient glow */}
               <div
-                className="absolute -inset-0.5 rounded-2xl blur-lg opacity-0 group-hover:opacity-70 transition-opacity duration-500"
+                className="absolute -inset-0.5 rounded-xl sm:rounded-2xl blur-lg opacity-0 group-hover:opacity-70 transition-opacity duration-500"
                 style={{
                   background: `radial-gradient(circle at center, ${card.color}40, transparent 70%)`,
                 }}
               />
               <div
-                className={`relative glass-card rounded-2xl p-5 sm:p-6 bg-gradient-to-br ${card.gradient} border ${card.border} transition-all duration-500 group-hover:border-white/30`}
+                className={`relative glass-card rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-5 xl:p-6 bg-gradient-to-br ${card.gradient} border ${card.border} transition-all duration-500 group-hover:border-white/30`}
                 style={{ boxShadow: `0 0 30px ${card.color}15` }}
               >
-                <div className="flex items-center gap-3 mb-4">
+                <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 lg:mb-4">
                   <div
-                    className="w-11 h-11 rounded-xl flex items-center justify-center border border-white/10"
+                    className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 xl:w-11 xl:h-11 rounded-lg sm:rounded-xl flex items-center justify-center border border-white/10"
                     style={{ background: `${card.color}25` }}
                   >
-                    <card.icon className="w-6 h-6" style={{ color: card.color }} />
+                    <card.icon className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{ color: card.color }} />
                   </div>
                   <motion.p
                     initial={{ opacity: 0.8 }}
                     whileHover={{ scale: 1.08 }}
-                    className="text-3xl sm:text-4xl font-bold text-white tracking-tight"
+                    className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-white tracking-tight"
                   >
                     {card.value}
                   </motion.p>
                 </div>
-                <p className="text-sm text-gray-400 font-medium">{card.label}</p>
+                <p className="text-[10px] sm:text-xs lg:text-sm text-gray-400 font-medium">{card.label}</p>
               </div>
             </motion.div>
           ))}
@@ -190,15 +190,15 @@ export default function MaintenanceDashboard() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="glass-card rounded-2xl p-5 sm:p-6 mb-10"
+          className="glass-card rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 mb-8 sm:mb-10"
         >
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
-              <ClipboardList className="w-5 h-5 text-secondary" />
+          <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+            <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-lg bg-primary/20 flex items-center justify-center">
+              <ClipboardList className="w-4 h-4 sm:w-5 sm:h-5 text-secondary" />
             </div>
             <div>
-              <h3 className="font-semibold text-white">Recent Maintenance Requests</h3>
-              <p className="text-xs text-gray-400">Latest tickets logged across campus</p>
+              <h3 className="font-semibold text-white text-sm sm:text-base">Recent Maintenance Requests</h3>
+              <p className="text-[10px] sm:text-xs text-gray-400">Latest tickets logged across campus</p>
             </div>
           </div>
 
@@ -206,12 +206,12 @@ export default function MaintenanceDashboard() {
           <div className="hidden md:block overflow-x-auto">
             <table className="w-full text-left">
               <thead>
-                <tr className="border-b border-white/10 text-gray-400 text-xs uppercase tracking-wider">
-                  <th className="py-3 px-4 font-medium">Ticket ID</th>
-                  <th className="py-3 px-4 font-medium">Location</th>
-                  <th className="py-3 px-4 font-medium">Issue</th>
-                  <th className="py-3 px-4 font-medium">Priority</th>
-                  <th className="py-3 px-4 font-medium">Status</th>
+                <tr className="border-b border-white/10 text-gray-400 text-[10px] sm:text-xs uppercase tracking-wider">
+                  <th className="py-2 sm:py-3 px-2 sm:px-4 font-medium">Ticket ID</th>
+                  <th className="py-2 sm:py-3 px-2 sm:px-4 font-medium hidden lg:table-cell">Location</th>
+                  <th className="py-2 sm:py-3 px-2 sm:px-4 font-medium">Issue</th>
+                  <th className="py-2 sm:py-3 px-2 sm:px-4 font-medium">Priority</th>
+                  <th className="py-2 sm:py-3 px-2 sm:px-4 font-medium">Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -225,16 +225,16 @@ export default function MaintenanceDashboard() {
                     whileHover={{ backgroundColor: 'rgba(37,99,235,0.08)' }}
                     className="border-b border-white/5 last:border-0"
                   >
-                    <td className="py-4 px-4 font-mono text-sm text-white">{req.id}</td>
-                    <td className="py-4 px-4 text-sm text-gray-300">{req.location}</td>
-                    <td className="py-4 px-4 text-sm text-gray-300">{req.issue}</td>
-                    <td className="py-4 px-4">
-                      <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border ${priorityStyles[req.priority]}`}>
+                    <td className="py-3 sm:py-4 px-2 sm:px-4 font-mono text-xs sm:text-sm text-white">{req.id}</td>
+                    <td className="py-3 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm text-gray-300 hidden lg:table-cell">{req.location}</td>
+                    <td className="py-3 sm:py-4 px-2 sm:px-4 text-xs sm:text-sm text-gray-300 max-w-[150px] sm:max-w-none truncate">{req.issue}</td>
+                    <td className="py-3 sm:py-4 px-2 sm:px-4">
+                      <span className={`inline-flex items-center px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium border ${priorityStyles[req.priority]}`}>
                         {req.priority}
                       </span>
                     </td>
-                    <td className="py-4 px-4">
-                      <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border ${statusStyles[req.status]}`}>
+                    <td className="py-3 sm:py-4 px-2 sm:px-4">
+                      <span className={`inline-flex items-center px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium border ${statusStyles[req.status]}`}>
                         {req.status}
                       </span>
                     </td>
@@ -245,7 +245,7 @@ export default function MaintenanceDashboard() {
           </div>
 
           {/* Mobile card list */}
-          <div className="md:hidden space-y-3">
+          <div className="md:hidden space-y-2 sm:space-y-3">
             {requests.map((req, i) => (
               <motion.div
                 key={req.id}
@@ -253,18 +253,18 @@ export default function MaintenanceDashboard() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="glass-card rounded-xl p-4"
+                className="glass-card rounded-lg sm:rounded-xl p-3 sm:p-4"
               >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-mono text-sm text-white">{req.id}</span>
-                  <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium border ${statusStyles[req.status]}`}>
+                <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+                  <span className="font-mono text-xs sm:text-sm text-white">{req.id}</span>
+                  <span className={`inline-flex items-center px-1.5 sm:px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-medium border ${statusStyles[req.status]}`}>
                     {req.status}
                   </span>
                 </div>
-                <p className="text-sm text-gray-300 mb-1">{req.issue}</p>
+                <p className="text-xs sm:text-sm text-gray-300 mb-1 sm:mb-1.5">{req.issue}</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-gray-400">{req.location}</span>
-                  <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium border ${priorityStyles[req.priority]}`}>
+                  <span className="text-[10px] sm:text-xs text-gray-400">{req.location}</span>
+                  <span className={`inline-flex items-center px-1.5 sm:px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-medium border ${priorityStyles[req.priority]}`}>
                     {req.priority}
                   </span>
                 </div>
@@ -274,41 +274,41 @@ export default function MaintenanceDashboard() {
         </motion.div>
 
         {/* Progress bars + Schedule */}
-        <div className="grid lg:grid-cols-2 gap-6">
+        <div className="grid lg:grid-cols-2 gap-4 sm:gap-6">
           {/* Animated progress bars */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="glass-card rounded-2xl p-5 sm:p-6"
+            className="glass-card rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6"
           >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center">
-                <Zap className="w-5 h-5 text-secondary" />
+            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-lg bg-primary/20 flex items-center justify-center">
+                <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-secondary" />
               </div>
               <div>
-                <h3 className="font-semibold text-white">Maintenance Progress</h3>
-                <p className="text-xs text-gray-400">Category-wise completion</p>
+                <h3 className="font-semibold text-white text-sm sm:text-base">Maintenance Progress</h3>
+                <p className="text-[10px] sm:text-xs text-gray-400">Category-wise completion</p>
               </div>
             </div>
 
-            <div className="space-y-5">
+            <div className="space-y-3 sm:space-y-4 lg:space-y-5">
               {progressBars.map((bar, i) => (
                 <div key={bar.label}>
-                  <div className="flex justify-between text-sm mb-2">
-                    <span className="text-gray-300">{bar.label}</span>
+                  <div className="flex justify-between text-xs sm:text-sm mb-1.5 sm:mb-2">
+                    <span className="text-gray-300 text-[10px] sm:text-xs lg:text-sm">{bar.label}</span>
                     <motion.span
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       viewport={{ once: true }}
                       transition={{ delay: 0.4 + i * 0.1 }}
-                      className="text-white font-medium"
+                      className="text-white font-medium text-[10px] sm:text-xs lg:text-sm"
                     >
                       {bar.percent}%
                     </motion.span>
                   </div>
-                  <div className="h-2.5 rounded-full bg-white/5 overflow-hidden">
+                  <div className="h-2 sm:h-2.5 rounded-full bg-white/5 overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
                       whileInView={{ width: `${bar.percent}%` }}
@@ -343,23 +343,23 @@ export default function MaintenanceDashboard() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="glass-card rounded-2xl p-5 sm:p-6"
+            className="glass-card rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6"
           >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-secondary/20 flex items-center justify-center">
-                <CalendarClock className="w-5 h-5 text-secondary" />
+            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-lg bg-secondary/20 flex items-center justify-center">
+                <CalendarClock className="w-4 h-4 sm:w-5 sm:h-5 text-secondary" />
               </div>
               <div>
-                <h3 className="font-semibold text-white">Today's Maintenance Schedule</h3>
-                <p className="text-xs text-gray-400">Planned tasks for today</p>
+                <h3 className="font-semibold text-white text-sm sm:text-base">Today's Maintenance Schedule</h3>
+                <p className="text-[10px] sm:text-xs text-gray-400">Planned tasks for today</p>
               </div>
             </div>
 
             <div className="relative">
               {/* Timeline line */}
-              <div className="absolute left-[18px] top-2 bottom-2 w-px bg-gradient-to-b from-primary/50 via-secondary/30 to-transparent" />
+              <div className="absolute left-[14px] sm:left-[16px] lg:left-[18px] top-2 bottom-2 w-px bg-gradient-to-b from-primary/50 via-secondary/30 to-transparent" />
 
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {scheduleItems.map((item, i) => (
                   <motion.div
                     key={item.time}
@@ -368,18 +368,18 @@ export default function MaintenanceDashboard() {
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
                     whileHover={{ x: 4 }}
-                    className="relative flex items-start gap-4 group"
+                    className="relative flex items-start gap-2 sm:gap-3 lg:gap-4 group"
                   >
                     {/* Node */}
-                    <div className="relative z-10 w-9 h-9 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center shrink-0 group-hover:bg-primary/30 transition-colors">
-                      <item.icon className="w-4 h-4 text-secondary" />
+                    <div className="relative z-10 w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center shrink-0 group-hover:bg-primary/30 transition-colors">
+                      <item.icon className="w-3 h-3 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4 text-secondary" />
                     </div>
-                    <div className="flex-1 pt-1">
-                      <div className="flex flex-wrap items-baseline gap-x-2">
-                        <span className="text-sm font-medium text-white">{item.time}</span>
-                        <span className="text-xs text-gray-400">· {item.location}</span>
+                    <div className="flex-1 pt-0.5 sm:pt-1">
+                      <div className="flex flex-wrap items-baseline gap-x-1 sm:gap-x-2">
+                        <span className="text-xs sm:text-sm font-medium text-white">{item.time}</span>
+                        <span className="text-[10px] sm:text-xs text-gray-400">· {item.location}</span>
                       </div>
-                      <p className="text-sm text-gray-300 mt-0.5">{item.task}</p>
+                      <p className="text-xs sm:text-sm text-gray-300 mt-0.5">{item.task}</p>
                     </div>
                   </motion.div>
                 ))}

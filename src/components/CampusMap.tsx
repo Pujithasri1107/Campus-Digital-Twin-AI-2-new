@@ -204,7 +204,7 @@ function BuildingCard({
       whileHover={{ y: -8, scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       onClick={onClick}
-      className={`group relative overflow-hidden rounded-2xl p-5 sm:p-6 cursor-pointer backdrop-blur-xl border transition-all duration-300 bg-gradient-to-br ${styles.bg} ${styles.border}`}
+      className={`group relative overflow-hidden rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 cursor-pointer backdrop-blur-xl border transition-all duration-300 bg-gradient-to-br ${styles.bg} ${styles.border}`}
       style={{
         boxShadow:
           building.status === 'Critical'
@@ -218,7 +218,7 @@ function BuildingCard({
       <motion.div
         animate={{ opacity: [0.3, 0.6, 0.3] }}
         transition={{ duration: 2, repeat: Infinity }}
-        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        className="absolute inset-0 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         style={{
           background: `linear-gradient(135deg, ${
             building.status === 'Critical'
@@ -231,30 +231,30 @@ function BuildingCard({
       />
 
       {/* Corner accent */}
-      <div className="absolute -top-10 -right-10 w-24 h-24 rounded-full bg-white/5 blur-2xl group-hover:bg-white/10 transition-all duration-300" />
+      <div className="absolute -top-10 -right-10 w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white/5 blur-2xl group-hover:bg-white/10 transition-all duration-300" />
 
       {/* Content */}
       <div className="relative">
         {/* Header */}
-        <div className="flex items-start justify-between mb-4">
+        <div className="flex items-start justify-between mb-3 sm:mb-4">
           <div
-            className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/10 ${styles.bg}`}
+            className={`w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-lg sm:rounded-xl flex items-center justify-center backdrop-blur-sm border border-white/10 ${styles.bg}`}
           >
-            <building.icon className={`w-6 h-6 sm:w-7 sm:h-7 ${styles.text}`} />
+            <building.icon className={`w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 ${styles.text}`} />
           </div>
           <span
-            className={`px-3 py-1 rounded-full text-xs font-semibold border backdrop-blur-sm ${styles.badge}`}
+            className={`px-2 py-0.5 sm:px-2.5 sm:py-1 lg:px-3 rounded-full text-[10px] sm:text-xs font-semibold border backdrop-blur-sm ${styles.badge}`}
           >
             {building.status}
           </span>
         </div>
 
         {/* Building Name */}
-        <h3 className="text-lg sm:text-xl font-bold text-white mb-2 truncate">{building.name}</h3>
+        <h3 className="text-base sm:text-lg lg:text-xl font-bold text-white mb-2 truncate">{building.name}</h3>
 
         {/* Health Score */}
-        <div className="flex items-center gap-2 mb-3">
-          <div className="flex-1 h-2 rounded-full bg-white/10 overflow-hidden">
+        <div className="flex items-center gap-2 mb-2 sm:mb-3">
+          <div className="flex-1 h-1.5 sm:h-2 rounded-full bg-white/10 overflow-hidden">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: `${building.healthScore}%` }}
@@ -268,17 +268,17 @@ function BuildingCard({
               }`}
             />
           </div>
-          <span className={`text-sm font-bold ${styles.text}`}>{building.healthScore}%</span>
+          <span className={`text-xs sm:text-sm font-bold ${styles.text}`}>{building.healthScore}%</span>
         </div>
 
         {/* Info Row */}
-        <div className="flex items-center justify-between text-xs sm:text-sm text-gray-400">
-          <div className="flex items-center gap-1.5">
-            <Activity className="w-3.5 h-3.5" />
+        <div className="flex items-center justify-between text-[10px] sm:text-xs lg:text-sm text-gray-400">
+          <div className="flex items-center gap-1">
+            <Activity className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
             <span>{building.devices} devices</span>
           </div>
-          <div className="flex items-center gap-1.5">
-            <Calendar className="w-3.5 h-3.5" />
+          <div className="flex items-center gap-1">
+            <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
             <span>{new Date(building.lastInspection).toLocaleDateString()}</span>
           </div>
         </div>
@@ -289,10 +289,10 @@ function BuildingCard({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="flex items-center gap-2 mt-3 pt-3 border-t border-white/10"
+            className="flex items-center gap-1.5 sm:gap-2 mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-white/10"
           >
-            <StatusIcon className={`w-4 h-4 ${styles.text}`} />
-            <span className="text-xs text-gray-400">{building.issues.length} issue(s) detected</span>
+            <StatusIcon className={`w-3 h-3 sm:w-4 sm:h-4 ${styles.text}`} />
+            <span className="text-[10px] sm:text-xs text-gray-400">{building.issues.length} issue(s) detected</span>
           </motion.div>
         )}
       </div>
@@ -546,19 +546,19 @@ export default function CampusMap() {
   ];
 
   return (
-    <section id="campus" className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">
+    <section id="campus" className="relative py-16 sm:py-20 lg:py-24 xl:py-32 overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
           animate={{ opacity: [0.1, 0.2, 0.1] }}
           transition={{ duration: 8, repeat: Infinity }}
-          className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full blur-[120px]"
+          className="absolute top-1/3 left-1/4 w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] rounded-full blur-[80px] sm:blur-[120px]"
           style={{ background: 'radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%)' }}
         />
         <motion.div
           animate={{ opacity: [0.1, 0.15, 0.1] }}
           transition={{ duration: 10, repeat: Infinity }}
-          className="absolute bottom-1/4 right-1/3 w-[400px] h-[400px] rounded-full blur-[100px]"
+          className="absolute bottom-1/4 right-1/3 w-[250px] h-[250px] sm:w-[400px] sm:h-[400px] rounded-full blur-[60px] sm:blur-[100px]"
           style={{ background: 'radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, transparent 70%)' }}
         />
       </div>
@@ -569,26 +569,26 @@ export default function CampusMap() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-10 sm:mb-14"
+          className="text-center mb-8 sm:mb-10 lg:mb-14"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+            className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full mb-4 sm:mb-6"
             style={{
               background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.15) 0%, rgba(56, 189, 248, 0.1) 100%)',
               border: '1px solid rgba(56, 189, 248, 0.2)',
             }}
           >
-            <MapPin className="w-4 h-4 text-cyan-400" />
-            <span className="text-sm font-medium text-cyan-400">Live Campus Map</span>
+            <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-400" />
+            <span className="text-xs sm:text-sm font-medium text-cyan-400">Live Campus Map</span>
           </motion.div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-3 sm:mb-4 tracking-tight">
             Interactive Smart Campus Map
           </h2>
-          <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base lg:text-lg text-gray-400 max-w-xl lg:max-w-2xl mx-auto px-4">
             Click any building to monitor its live maintenance status and AI recommendations.
           </p>
         </motion.div>
@@ -598,29 +598,29 @@ export default function CampusMap() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex flex-col sm:flex-row gap-4 mb-8 sm:mb-10"
+          className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6 sm:mb-8 lg:mb-10"
         >
           {/* Search Bar */}
           <div className="relative flex-1">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+            <Search className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-gray-400" />
             <input
               type="text"
               placeholder="Search buildings..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 sm:py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 transition-colors"
+              className="w-full pl-10 sm:pl-12 pr-4 py-2.5 sm:py-3 lg:py-4 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500/50 transition-colors text-sm sm:text-base"
             />
           </div>
 
           {/* Filter Buttons */}
-          <div className="flex gap-2 overflow-x-auto pb-2 sm:pb-0">
+          <div className="flex gap-2 overflow-x-auto pb-1 sm:pb-0 -mx-1 px-1 sm:mx-0 sm:px-0">
             {filterButtons.map((btn) => (
               <motion.button
                 key={btn.value}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setFilter(btn.value)}
-                className={`relative px-4 sm:px-5 py-3 rounded-xl text-sm font-medium whitespace-nowrap transition-all duration-300 ${
+                className={`relative px-3 sm:px-4 lg:px-5 py-2 sm:py-2.5 lg:py-3 rounded-xl text-xs sm:text-sm font-medium whitespace-nowrap transition-all duration-300 flex-shrink-0 ${
                   filter === btn.value
                     ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white border-transparent'
                     : 'bg-white/5 text-gray-400 border border-white/10 hover:border-white/20'
@@ -628,7 +628,7 @@ export default function CampusMap() {
               >
                 <span className="relative z-10">{btn.label}</span>
                 <span
-                  className={`ml-2 px-2 py-0.5 rounded-full text-xs ${
+                  className={`ml-1.5 sm:ml-2 px-1.5 sm:px-2 py-0.5 rounded-full text-[10px] sm:text-xs ${
                     filter === btn.value ? 'bg-white/20' : 'bg-white/10'
                   }`}
                 >
@@ -640,7 +640,7 @@ export default function CampusMap() {
         </motion.div>
 
         {/* Building Cards Grid */}
-        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
+        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 lg:gap-5">
           <AnimatePresence mode="popLayout">
             {filteredBuildings.map((building) => (
               <BuildingCard
@@ -657,10 +657,10 @@ export default function CampusMap() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-center py-16"
+            className="text-center py-12 sm:py-16"
           >
-            <Search className="w-12 h-12 text-gray-600 mx-auto mb-4" />
-            <p className="text-gray-400">No buildings found matching your criteria.</p>
+            <Search className="w-10 h-10 sm:w-12 sm:h-12 text-gray-600 mx-auto mb-4" />
+            <p className="text-sm sm:text-base text-gray-400">No buildings found matching your criteria.</p>
           </motion.div>
         )}
       </div>

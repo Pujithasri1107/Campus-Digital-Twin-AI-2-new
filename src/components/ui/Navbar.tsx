@@ -23,6 +23,17 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -33,22 +44,23 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          <motion.div
-            className="flex items-center gap-3"
+        <div className="flex items-center justify-between h-16 sm:h-20">
+          <motion.a
+            href="#home"
+            className="flex items-center gap-2 sm:gap-3"
             whileHover={{ scale: 1.02 }}
             transition={{ type: 'spring', stiffness: 400 }}
           >
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center neon-glow">
-              <Building2 className="w-6 h-6 text-white" />
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center neon-glow">
+              <Building2 className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             </div>
-            <div>
-              <h1 className="text-lg font-bold text-white">Campus Digital Twin</h1>
-              <p className="text-xs text-gray-400">AI Maintenance Assistant</p>
+            <div className="min-w-0">
+              <h1 className="text-base sm:text-lg font-bold text-white truncate">Campus Digital Twin</h1>
+              <p className="text-[10px] sm:text-xs text-gray-400 hidden sm:block">AI Maintenance Assistant</p>
             </div>
-          </motion.div>
+          </motion.a>
 
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-6 xl:gap-8">
             {navLinks.map((link, index) => (
               <motion.a
                 key={link.name}
@@ -56,7 +68,7 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="relative text-gray-300 hover:text-white transition-colors font-medium group"
+                className="relative text-gray-300 hover:text-white transition-colors font-medium text-sm xl:text-base group whitespace-nowrap"
               >
                 {link.name}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary group-hover:w-full transition-all duration-300" />
@@ -69,47 +81,56 @@ export default function Navbar() {
               href="#login"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-6 py-2.5 rounded-full btn-outline text-white font-medium neon-border inline-block"
+              className="px-5 sm:px-6 py-2 sm:py-2.5 rounded-full btn-outline text-white font-medium text-sm neon-border inline-block"
             >
               Login
             </motion.a>
           </div>
 
           <button
-            className="lg:hidden text-white p-2"
+            className="lg:hidden text-white p-2 -mr-2 touch-manipulation"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
             className="lg:hidden glass-nav border-t border-white/10"
           >
-            <div className="px-4 py-4 space-y-3">
-              {navLinks.map((link) => (
-                <a
+            <div className="px-4 py-4 space-y-1 max-h-[70vh] overflow-y-auto">
+              {navLinks.map((link, index) => (
+                <motion.a
                   key={link.name}
                   href={link.href}
-                  className="block text-gray-300 hover:text-white py-2 font-medium transition-colors"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                  className="block text-gray-300 hover:text-white py-3 px-2 font-medium transition-colors rounded-lg hover:bg-white/5"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.name}
-                </a>
+                </motion.a>
               ))}
-              <a
+              <motion.a
                 href="#login"
-                className="w-full mt-4 px-6 py-2.5 rounded-full btn-outline text-white font-medium block text-center"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: navLinks.length * 0.05 }}
+                className="block w-full mt-3 px-6 py-3 rounded-xl btn-primary text-white font-medium text-center"
                 onClick={() => setIsOpen(false)}
               >
                 Login
-              </a>
+              </motion.a>
             </div>
           </motion.div>
         )}

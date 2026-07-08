@@ -44,15 +44,15 @@ function FeatureCard({ icon: Icon, label, delay }: FeatureCardProps) {
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay, duration: 0.5 }}
-      className="flex items-center gap-3 group"
+      className="flex items-center gap-2 sm:gap-3 group"
     >
       <motion.div
         whileHover={{ scale: 1.1 }}
-        className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary/30 to-secondary/20 flex items-center justify-center border border-primary/30"
+        className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-primary/30 to-secondary/20 flex items-center justify-center border border-primary/30"
       >
-        <Icon className="w-4 h-4 text-secondary" />
+        <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-secondary" />
       </motion.div>
-      <span className="text-sm text-gray-300 group-hover:text-white transition-colors">
+      <span className="text-xs sm:text-sm text-gray-300 group-hover:text-white transition-colors">
         {label}
       </span>
     </motion.div>
@@ -297,15 +297,15 @@ export default function Login() {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-24 pb-12">
-        <div className="w-full max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <div className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 pb-8 sm:pb-12">
+        <div className="w-full max-w-5xl lg:max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 xl:gap-12 items-center">
             {/* Left Column - Login Form */}
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="w-full max-w-md mx-auto lg:mx-0"
+              className="w-full max-w-sm mx-auto sm:max-w-md lg:mx-0"
             >
               {/* Back to Home Link */}
               <motion.a
@@ -313,9 +313,9 @@ export default function Login() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors mb-8 group"
+                className="inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-gray-400 hover:text-white transition-colors mb-4 sm:mb-6 lg:mb-8 group"
               >
-                <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:-translate-x-1 transition-transform" />
                 Back to Home
               </motion.a>
 
@@ -325,7 +325,7 @@ export default function Login() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ delay: 0.3, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ y: -4 }}
-                className="relative overflow-hidden rounded-3xl p-8 sm:p-10 backdrop-blur-2xl"
+                className="relative overflow-hidden rounded-2xl sm:rounded-3xl p-5 sm:p-6 lg:p-8 xl:p-10 backdrop-blur-2xl"
                 style={{
                   background: 'linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.03) 50%, rgba(255,255,255,0.05) 100%)',
                   border: '1px solid rgba(56, 189, 248, 0.2)',
@@ -336,29 +336,29 @@ export default function Login() {
                 <motion.div
                   animate={{ opacity: [0.2, 0.4, 0.2] }}
                   transition={{ duration: 3, repeat: Infinity }}
-                  className="absolute inset-0 rounded-3xl pointer-events-none"
+                  className="absolute inset-0 rounded-2xl sm:rounded-3xl pointer-events-none"
                   style={{
                     boxShadow: 'inset 0 0 40px rgba(56, 189, 248, 0.08)',
                   }}
                 />
 
                 {/* Header */}
-                <div className="relative z-10 text-center mb-8">
+                <div className="relative z-10 text-center mb-5 sm:mb-6 lg:mb-8">
                   {/* Logo Icon */}
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ delay: 0.5, type: 'spring', stiffness: 200 }}
-                    className="relative w-20 h-20 mx-auto mb-6"
+                    className="relative w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 mx-auto mb-4 sm:mb-5 lg:mb-6"
                   >
                     {/* Outer glow */}
                     <motion.div
                       animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
                       transition={{ duration: 3, repeat: Infinity }}
-                      className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary to-secondary blur-xl"
+                      className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-br from-primary to-secondary blur-xl"
                     />
-                    <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center border border-white/10">
-                      <Building2 className="w-10 h-10 text-white" />
+                    <div className="relative w-full h-full rounded-xl sm:rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center border border-white/10">
+                      <Building2 className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />
                     </div>
                   </motion.div>
 
@@ -366,7 +366,7 @@ export default function Login() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6 }}
-                    className="text-3xl font-bold text-white mb-3"
+                    className="text-2xl sm:text-3xl font-bold text-white mb-2 sm:mb-3"
                   >
                     Welcome Back
                   </motion.h1>
@@ -374,22 +374,22 @@ export default function Login() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.7 }}
-                    className="text-gray-400 text-sm sm:text-base"
+                    className="text-gray-400 text-xs sm:text-sm lg:text-base"
                   >
                     Sign in to access the Smart Campus Digital Twin platform.
                   </motion.p>
                 </div>
 
                 {/* Form */}
-                <form onSubmit={handleSubmit} className="relative z-10 space-y-5">
+                <form onSubmit={handleSubmit} className="relative z-10 space-y-4 sm:space-y-5">
                   {/* Email Field */}
                   <div>
-                    <label htmlFor="email" className="block text-sm text-gray-400 mb-2 font-medium">
+                    <label htmlFor="email" className="block text-xs sm:text-sm text-gray-400 mb-1.5 sm:mb-2 font-medium">
                       Email Address
                     </label>
                     <div className="relative group">
-                      <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none transition-colors duration-300 group-focus-within:text-secondary">
-                        <Mail className="w-5 h-5 text-gray-500 group-focus-within:text-secondary" />
+                      <div className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 pointer-events-none transition-colors duration-300 group-focus-within:text-secondary">
+                        <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500 group-focus-within:text-secondary" />
                       </div>
                       <input
                         type="email"
@@ -397,7 +397,7 @@ export default function Login() {
                         name="email"
                         value={formData.email}
                         onChange={handleEmailChange}
-                        className={`w-full bg-white/5 rounded-xl pl-12 pr-4 py-3.5 text-white placeholder:text-gray-500 border transition-all duration-300 focus:outline-none ${
+                        className={`w-full bg-white/5 rounded-lg sm:rounded-xl pl-10 sm:pl-12 pr-3 sm:pr-4 py-2.5 sm:py-3 lg:py-3.5 text-sm text-white placeholder:text-gray-500 border transition-all duration-300 focus:outline-none ${
                           errors.email
                             ? 'border-red-500/50 focus:border-red-400'
                             : 'border-white/10 focus:border-secondary/60 focus:bg-white/8'
@@ -413,7 +413,7 @@ export default function Login() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -10 }}
                           id="email-error"
-                          className="mt-2 text-sm text-red-400 flex items-center gap-1"
+                          className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-red-400 flex items-center gap-1"
                         >
                           <span className="w-1 h-1 rounded-full bg-red-400" />
                           {errors.email}
@@ -424,12 +424,12 @@ export default function Login() {
 
                   {/* Password Field */}
                   <div>
-                    <label htmlFor="password" className="block text-sm text-gray-400 mb-2 font-medium">
+                    <label htmlFor="password" className="block text-xs sm:text-sm text-gray-400 mb-1.5 sm:mb-2 font-medium">
                       Password
                     </label>
                     <div className="relative group">
-                      <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                        <Lock className="w-5 h-5 text-gray-500 group-focus-within:text-secondary transition-colors" />
+                      <div className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                        <Lock className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500 group-focus-within:text-secondary transition-colors" />
                       </div>
                       <input
                         type={showPassword ? 'text' : 'password'}
@@ -437,7 +437,7 @@ export default function Login() {
                         name="password"
                         value={formData.password}
                         onChange={handlePasswordChange}
-                        className={`w-full bg-white/5 rounded-xl pl-12 pr-12 py-3.5 text-white placeholder:text-gray-500 border transition-all duration-300 focus:outline-none ${
+                        className={`w-full bg-white/5 rounded-lg sm:rounded-xl pl-10 sm:pl-12 pr-10 sm:pr-12 py-2.5 sm:py-3 lg:py-3.5 text-sm text-white placeholder:text-gray-500 border transition-all duration-300 focus:outline-none ${
                           errors.password
                             ? 'border-red-500/50 focus:border-red-400'
                             : 'border-white/10 focus:border-secondary/60 focus:bg-white/8'
@@ -448,13 +448,13 @@ export default function Login() {
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition-colors"
+                        className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition-colors p-1"
                         aria-label={showPassword ? 'Hide password' : 'Show password'}
                       >
                         {showPassword ? (
-                          <EyeOff className="w-5 h-5" />
+                          <EyeOff className="w-4 h-4 sm:w-5 sm:h-5" />
                         ) : (
-                          <Eye className="w-5 h-5" />
+                          <Eye className="w-4 h-4 sm:w-5 sm:h-5" />
                         )}
                       </button>
                     </div>
@@ -465,7 +465,7 @@ export default function Login() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: -10 }}
                           id="password-error"
-                          className="mt-2 text-sm text-red-400 flex items-center gap-1"
+                          className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-red-400 flex items-center gap-1"
                         >
                           <span className="w-1 h-1 rounded-full bg-red-400" />
                           {errors.password}
@@ -475,8 +475,8 @@ export default function Login() {
                   </div>
 
                   {/* Remember Me & Forgot Password */}
-                  <div className="flex items-center justify-between">
-                    <label className="flex items-center gap-2.5 cursor-pointer group">
+                  <div className="flex items-center justify-between gap-2">
+                    <label className="flex items-center gap-2 sm:gap-2.5 cursor-pointer group">
                       <div className="relative">
                         <input
                           type="checkbox"
@@ -484,7 +484,7 @@ export default function Login() {
                           onChange={(e) => setFormData({ ...formData, rememberMe: e.target.checked })}
                           className="sr-only"
                         />
-                        <div className={`w-5 h-5 rounded-md border transition-all duration-300 ${
+                        <div className={`w-4 h-4 sm:w-5 sm:h-5 rounded-md border transition-all duration-300 ${
                           formData.rememberMe
                             ? 'bg-primary border-primary'
                             : 'border-white/20 group-hover:border-white/40'
@@ -521,7 +521,7 @@ export default function Login() {
                     disabled={isSubmitting}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full relative overflow-hidden rounded-xl py-4 font-semibold text-white group"
+                    className="w-full relative overflow-hidden rounded-lg sm:rounded-xl py-3 sm:py-3.5 lg:py-4 font-semibold text-white text-sm sm:text-base group"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500" />
                     <motion.div
@@ -529,21 +529,21 @@ export default function Login() {
                       whileHover={{ opacity: 1 }}
                       className="absolute -inset-2 bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-500 blur-xl opacity-50"
                     />
-                    <div className="absolute inset-0 border border-white/10 rounded-xl" />
+                    <div className="absolute inset-0 border border-white/10 rounded-lg sm:rounded-xl" />
                     <motion.div
                       animate={isSubmitting ? {} : { x: ['-100%', '100%'] }}
                       transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
                       className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent"
                     />
-                    <span className="relative z-10 flex items-center justify-center gap-2">
+                    <span className="relative z-10 flex items-center justify-center gap-1.5 sm:gap-2">
                       {isSubmitting ? (
                         <>
-                          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                          <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                           Signing in...
                         </>
                       ) : (
                         <>
-                          <Shield className="w-5 h-5" />
+                          <Shield className="w-4 h-4 sm:w-5 sm:h-5" />
                           Login
                         </>
                       )}
@@ -551,25 +551,25 @@ export default function Login() {
                   </motion.button>
 
                   {/* Divider */}
-                  <div className="relative flex items-center gap-4 my-6">
+                  <div className="relative flex items-center gap-3 sm:gap-4 my-4 sm:my-5 lg:my-6">
                     <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-                    <span className="text-sm text-gray-500 font-medium">OR</span>
+                    <span className="text-xs sm:text-sm text-gray-500 font-medium">OR</span>
                     <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
                   </div>
 
                   {/* Social Login Buttons */}
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 gap-3 sm:gap-4">
                     <motion.button
                       type="button"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="flex items-center justify-center gap-2.5 py-3.5 rounded-xl text-sm font-medium text-white transition-all duration-300"
+                      className="flex items-center justify-center gap-2 sm:gap-2.5 py-3 sm:py-3.5 rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium text-white transition-all duration-300"
                       style={{
                         background: 'rgba(255,255,255,0.05)',
                         border: '1px solid rgba(255,255,255,0.1)',
                       }}
                     >
-                      <svg className="w-5 h-5" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24">
                         <path
                           fill="#4285F4"
                           d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -593,13 +593,13 @@ export default function Login() {
                       type="button"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="flex items-center justify-center gap-2.5 py-3.5 rounded-xl text-sm font-medium text-white transition-all duration-300"
+                      className="flex items-center justify-center gap-2 sm:gap-2.5 py-3 sm:py-3.5 rounded-lg sm:rounded-xl text-xs sm:text-sm font-medium text-white transition-all duration-300"
                       style={{
                         background: 'rgba(255,255,255,0.05)',
                         border: '1px solid rgba(255,255,255,0.1)',
                       }}
                     >
-                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                       </svg>
                       GitHub
@@ -611,7 +611,7 @@ export default function Login() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.8 }}
-                    className="text-center text-sm text-gray-400 pt-2"
+                    className="text-center text-xs sm:text-sm text-gray-400 pt-1.5 sm:pt-2"
                   >
                     Don't have an account?{' '}
                     <a
@@ -628,20 +628,20 @@ export default function Login() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.9 }}
-                  className="relative z-10 flex items-center justify-center gap-4 mt-8 pt-6 border-t border-white/10"
+                  className="relative z-10 flex flex-wrap items-center justify-center gap-2 sm:gap-4 mt-5 sm:mt-6 lg:mt-8 pt-4 sm:pt-5 lg:pt-6 border-t border-white/10"
                 >
-                  <a href="#" className="text-xs text-gray-500 hover:text-white transition-colors flex items-center gap-1">
-                    <FileText className="w-3.5 h-3.5" />
+                  <a href="#" className="text-[10px] sm:text-xs text-gray-500 hover:text-white transition-colors flex items-center gap-1">
+                    <FileText className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                     Privacy Policy
                   </a>
-                  <span className="w-1 h-1 rounded-full bg-gray-600" />
-                  <a href="#" className="text-xs text-gray-500 hover:text-white transition-colors flex items-center gap-1">
-                    <BookOpen className="w-3.5 h-3.5" />
+                  <span className="w-1 h-1 rounded-full bg-gray-600 hidden sm:block" />
+                  <a href="#" className="text-[10px] sm:text-xs text-gray-500 hover:text-white transition-colors flex items-center gap-1">
+                    <BookOpen className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                     Terms of Service
                   </a>
-                  <span className="w-1 h-1 rounded-full bg-gray-600" />
-                  <a href="#" className="text-xs text-gray-500 hover:text-white transition-colors flex items-center gap-1">
-                    <Heart className="w-3.5 h-3.5" />
+                  <span className="w-1 h-1 rounded-full bg-gray-600 hidden sm:block" />
+                  <a href="#" className="text-[10px] sm:text-xs text-gray-500 hover:text-white transition-colors flex items-center gap-1">
+                    <Heart className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                     Help Center
                   </a>
                 </motion.div>
@@ -817,7 +817,7 @@ export default function Login() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.5, duration: 0.6 }}
-                  className="mt-8 grid grid-cols-2 gap-4"
+                  className="mt-6 sm:mt-8 grid grid-cols-2 gap-3 sm:gap-4"
                 >
                   <FeatureCard icon={Sparkles} label="AI Powered Monitoring" delay={0.6} />
                   <FeatureCard icon={Wrench} label="Real-time Maintenance" delay={0.7} />
