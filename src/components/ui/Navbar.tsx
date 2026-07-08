@@ -105,32 +105,26 @@ export default function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden glass-nav border-t border-white/10"
+            className="lg:hidden absolute top-full left-0 right-0 glass-nav border-t border-white/10 z-[60] pointer-events-auto"
           >
             <div className="px-4 py-4 space-y-1 max-h-[70vh] overflow-y-auto">
-              {navLinks.map((link, index) => (
-                <motion.a
+              {navLinks.map((link) => (
+                <a
                   key={link.name}
                   href={link.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                  className="block text-gray-300 hover:text-white py-3 px-2 font-medium transition-colors rounded-lg hover:bg-white/5"
+                  className="block text-gray-300 hover:text-white py-3 px-2 font-medium transition-colors rounded-lg hover:bg-white/5 touch-manipulation"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.name}
-                </motion.a>
+                </a>
               ))}
-              <motion.a
+              <a
                 href="#login"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: navLinks.length * 0.05 }}
-                className="block w-full mt-3 px-6 py-3 rounded-xl btn-primary text-white font-medium text-center"
+                className="block w-full mt-3 px-6 py-3 rounded-xl btn-primary text-white font-medium text-center touch-manipulation"
                 onClick={() => setIsOpen(false)}
               >
                 Login
-              </motion.a>
+              </a>
             </div>
           </motion.div>
         )}
