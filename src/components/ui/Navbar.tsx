@@ -4,8 +4,8 @@ import { Menu, X, Building2 } from 'lucide-react';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
-  { name: 'Campus Map', href: '#campus' },
-  { name: 'AI Assistant', href: '#assistant' },
+  { name: 'Campus Map', href: '#campus-map' },
+  { name: 'AI Assistant', href: '#ai-assistant' },
   { name: 'Maintenance', href: '#maintenance' },
   { name: 'Dashboard', href: '#dashboard' },
   { name: 'Contact', href: '#contact' },
@@ -23,16 +23,32 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    setIsOpen(false);
+    document.body.style.overflow = '';
+
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+
+    if (element) {
+      const navHeight = 80;
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - navHeight,
+        behavior: 'smooth',
+      });
     }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isOpen]);
+
+    if (href === '#login') {
+      window.location.hash = 'login';
+    }
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+    document.body.style.overflow = '';
+  };
 
   return (
     <motion.nav
@@ -50,6 +66,7 @@ export default function Navbar() {
             className="flex items-center gap-2 sm:gap-3"
             whileHover={{ scale: 1.02 }}
             transition={{ type: 'spring', stiffness: 400 }}
+            onClick={(e) => handleNavClick(e, '#home')}
           >
             <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center neon-glow">
               <Building2 className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
@@ -88,45 +105,57 @@ export default function Navbar() {
           </div>
 
           <button
-            className="lg:hidden text-white p-2 -mr-2 touch-manipulation"
+            className="lg:hidden text-white p-3 -mr-2 touch-manipulation cursor-pointer"
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            style={{ WebkitTapHighlightColor: 'transparent' }}
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="lg:hidden absolute top-full left-0 right-0 glass-nav border-t border-white/10 z-[60] pointer-events-auto"
-          >
-            <div className="px-4 py-4 space-y-1 max-h-[70vh] overflow-y-auto">
-              {navLinks.map((link) => (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="lg:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[55]"
+              onClick={closeMenu}
+            />
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+              className="lg:hidden fixed top-16 sm:top-20 left-0 right-0 glass-nav border-b border-white/10 z-[60] pointer-events-auto"
+            >
+              <div className="px-4 py-4 space-y-1">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="block text-gray-300 hover:text-white py-3.5 px-4 font-medium transition-colors rounded-lg hover:bg-white/5 touch-manipulation cursor-pointer"
+                    style={{ WebkitTapHighlightColor: 'transparent' }}
+                    onClick={(e) => handleNavClick(e, link.href)}
+                  >
+                    {link.name}
+                  </a>
+                ))}
                 <a
-                  key={link.name}
-                  href={link.href}
-                  className="block text-gray-300 hover:text-white py-3 px-2 font-medium transition-colors rounded-lg hover:bg-white/5 touch-manipulation"
-                  onClick={() => setIsOpen(false)}
+                  href="#login"
+                  className="block w-full mt-3 px-6 py-3.5 rounded-xl btn-primary text-white font-semibold text-center touch-manipulation cursor-pointer"
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
+                  onClick={(e) => handleNavClick(e, '#login')}
                 >
-                  {link.name}
+                  Login
                 </a>
-              ))}
-              <a
-                href="#login"
-                className="block w-full mt-3 px-6 py-3 rounded-xl btn-primary text-white font-medium text-center touch-manipulation"
-                onClick={() => setIsOpen(false)}
-              >
-                Login
-              </a>
-            </div>
-          </motion.div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </motion.nav>

@@ -119,7 +119,7 @@ export default function AIAssistant() {
   };
 
   return (
-    <section id="assistant" className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
+    <section id="ai-assistant" className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 right-1/4 w-48 sm:w-72 lg:w-96 h-48 sm:h-72 lg:h-96 bg-primary/10 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 left-1/4 w-40 sm:w-56 lg:w-72 h-40 sm:h-56 lg:h-72 bg-secondary/10 rounded-full blur-3xl" />

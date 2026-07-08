@@ -546,7 +546,7 @@ export default function CampusMap() {
   ];
 
   return (
-    <section id="campus" className="relative py-16 sm:py-20 lg:py-24 xl:py-32 overflow-hidden">
+    <section id="campus-map" className="relative py-16 sm:py-20 lg:py-24 xl:py-32 overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
